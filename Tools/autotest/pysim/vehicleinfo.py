@@ -135,6 +135,38 @@ class VehicleInfo(object):
                                             "default_params/gazebo-iris.parm"],
                 "external": True,
             },
+
+            "gazebo-drone1": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone1.parm"],
+            },
+            "gazebo-drone2": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone2.parm"],
+            },
+            "gazebo-drone3": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone3.parm"],
+            },
+            "gazebo-drone4": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone4.parm"],
+            },
+            "gazebo-drone5": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone5.parm"],
+            },
+            "gazebo-drone6": {
+                "waf_target": "bin/arducopter",
+                "default_params_filename": ["default_params/copter.parm",
+                                            "default_params/gazebo-drone6.parm"],
+            },
+
             "airsim-copter": {
                 "waf_target": "bin/arducopter",
                 "default_params_filename": ["default_params/copter.parm",
