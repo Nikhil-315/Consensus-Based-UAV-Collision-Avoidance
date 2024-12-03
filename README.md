@@ -18,7 +18,7 @@ The corrective action required is determined by a simple method which uses relat
 3. ROS1 Noetic and Gazebo
 4. MAVROS
 
-    You may follow https://github.com/Intelligent-Quads/iq_tutorials.git upto 'Installing ROS and MAVROS', 'Drone Swarms with Ardupilot' and 'Drone Swarms with Ardupilot+MAVROS' for the above setup.
+    You may follow https://github.com/Intelligent-Quads/iq_tutorials.git from 'Installing Ardupilot and MAVProxy' upto 'Installing ROS and MAVROS', 'Drone Swarms with Ardupilot' and 'Drone Swarms with Ardupilot+MAVROS' for the above setup.
 
 5. utm Library for Python
 ```
