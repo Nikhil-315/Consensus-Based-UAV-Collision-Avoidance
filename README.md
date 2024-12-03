@@ -1,9 +1,9 @@
 # Consensus-Based-UAV-Collision-Avoidance
-This repository implements a consesus based collision avoidance method for two UAVs using Ardupilot and MAVROS flight control stack. The method has been implemented using Python and ROS1 Noetic.
+This repository implements a simple consesus based collision avoidance method for two UAVs using Ardupilot and MAVROS flight control stack. The method has been implemented using Python and ROS1 Noetic.
 
 When an adversary drone (drone2) is within alert distance, the user drone (drone1) listens for position and velocity data of drone2 (facilitated by ROS topics in this case). drone1 also receives the cooperative status of drone2, i.e. how much is drone2 willing to take corrective actions. If drone2 is not cooperative, drone1 will take entirety of the corrective action required. If drone2 is cooperative, drone1 takes a part of the corrective action required while assuming the other part is taken by drone2. 
 
-The corrective action required is determined by a simple method which uses relative distance and velocity of the drones and cooperative status of each drone.
+The corrective action required is determined by a simple method which uses relative distance and relative velocity of the drones and cooperative status of each drone.
 
 
 ## Contents
@@ -31,3 +31,57 @@ pip install PyGeodesy
 ```
 
 ## Theory
+This section contains 3 parts:
+1. [Collision Detection](#collision-detection) where the possible violation of minimum safe distance by drone2 is detected using relative distance and relative velocity of drone1 wrt drone2.
+   
+2. [Corrective Action Calculation](#corrective-action-calculation) where the minimum required corrective velocity magnitude for the current velocity is determined for drone1 such that atleast the minimum safe distance is achieved. This is done using minimum safe distance value, relative distance, relative velocity and cooperative status of each drone. 
+   
+3. [Collision Avoidance](#collision-avoidance) where the corrective velocity is applied to drone1.
+   
+
+### Collision Detection
+![Relative vectors](https://github.com/user-attachments/assets/ed5862d2-4c99-4cae-8fd7-bd4fceb7bb13)
+
+From the dot product of relative velocity vector and relative distance vector of drone1 wrt drone2, the angle between the two vectors is obtained. By trigonometric calculations using this angle and the magnitude of relative distance, the minimum seperation distance between drone1 and drone2 (dist) and the scaling factor for relative velocity vector (ttc) is obtained.  
+
+```math
+cos(\theta) = \frac{\left( relative\_velocity\_vect \cdot relative\_distance\_vect \right)}{|relative\_velocity\_vect| |relative\_distance\_vect|}
+```
+```math
+dist = tan(\theta) * |relative\_distance\_vect|
+```
+
+```math
+ttc = \frac{|relative\_distance\_vect|}{cos(\theta) |relative\_velocity\_vect|}
+```
+
+If dist is less than the specified minimum safe distance, it would indicate a collision between drone1 and drone2 after time ttc.
+
+
+### Corrective Action Calculation
+![Desired Velocity](https://github.com/user-attachments/assets/bea884ac-e22b-4bb1-93bb-7d31ff759e24)
+
+A desired relative velocity will be one where atleast the minimum safe distance is not violated. The magnitude of this desired relative velocity (vel_des) can be calculated by scaling by ttc and Pythagoras theorem or other trigonometric calculations.  
+
+```math
+vel\_des = \frac{\sqrt{ min\_safe\_dist^2 + |relative\_distance\_vect|^2 }}{ttc}
+```
+
+To achieve this desired relative velocity, a velocity correction would have to be given to the current velocity of drone1, which would be perpendicular to the relative velocity. For simplicity, perpendicular velocity correction only in the horizontal plane is considered. 
+
+![Velocity Correction](https://github.com/user-attachments/assets/501ddae9-d959-43a1-8ba1-f59fc8488227)
+
+The perpendicular velocity correction required (vel_correct_req) can be obtained by Pythagoras theorem.
+
+```math
+vel\_correct\_req = \sqrt{ vel\_des^2 - |relative\_velocity\_vect|^2 }
+```
+
+If drone2 is not cooperative, this corrective action will have to be taken by drone1 in entirety. 
+But if drone2 is cooperative and has cooperative status D_2, while cooperative status of drone1 being D_1, the perpendicular velocity correction for drone1 can be set to be:
+
+```math
+vel\_correct\_req = vel\_correct\_req * \frac{D_2}{D_1 + D_2} 
+```
+
+Therefore, higher cooperative status (for ex. 3) would be given higher airspace priority and thus lesser corrective action will be assigned to it, while lower cooperative status (for ex. 1) would be given lesser airspace priority and thus more corrective action will be assigned to it.
