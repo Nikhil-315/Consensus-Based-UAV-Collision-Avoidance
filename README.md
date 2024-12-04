@@ -77,7 +77,7 @@ The perpendicular velocity correction required (vel_correct_req) can be obtained
 vel\_correct\_req = \sqrt{ vel\_des^2 - |relative\_velocity\_vect|^2 }
 ```
 
-If drone2 is not cooperative, this corrective action will have to be taken by drone1 in entirety. 
+If drone2 is not cooperative (None), this corrective action will have to be taken by drone1 in entirety. 
 
 But if drone2 is cooperative and has cooperative status D_2, while cooperative status of drone1 being D_1, the perpendicular velocity correction for drone1 can be set to be:
 
@@ -113,7 +113,8 @@ Having setup the workspace, you may replace the csv file path given at 'cas_ws/s
 
 The csv file given at 'cas_ws/src/collision_avoidance/src/waypoints.csv' is an example of waypoints that can be given to drone1 and drone2. Please note that the columns alt1 and alt2 refer to relative altitude wrt initial takeoff altitude.
 
-Once the Gazebo environment has been spawned and the Ardupilot controllers for each drone has been initialized, run the command:
+For non-cooperative drone, you may set the cooperative variable as 'None'. Else, you may set it as any positive integer such as 1, 2, 3, etc. 
+Once the Gazebo environment has been spawned and the Ardupilot controller for each drone has been initialized, run the command:
 
 ```
 roslaunch collision_avoidance 2_apm.launch
