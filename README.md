@@ -78,6 +78,7 @@ vel\_correct\_req = \sqrt{ vel\_des^2 - |relative\_velocity\_vect|^2 }
 ```
 
 If drone2 is not cooperative, this corrective action will have to be taken by drone1 in entirety. 
+
 But if drone2 is cooperative and has cooperative status D_2, while cooperative status of drone1 being D_1, the perpendicular velocity correction for drone1 can be set to be:
 
 ```math
@@ -97,6 +98,9 @@ V_{p_1} = \left( \frac{-V_y}{\sqrt{V_x^2 + V_y^2}}, \frac{V_x}{\sqrt{V_x^2 + V_y
 ```math
 V_{p_2} = \left( \frac{V_y}{\sqrt{V_x^2 + V_y^2}}, \frac{-V_x}{\sqrt{V_x^2 + V_y^2}}, 0 \right) = -V
 ```
+
 It can be seen that the two vectors are along the same line but in opposite directions. 
-Now that two possible perpendicular velocity corrections have been determined, each can be applied to the current velocity of drone1, and the minimum seperation distance between drone1 and drone2 (dist) is again calculated. The velocity correction for which dist satisfies the specified minimum safe distance can be finally applied to the current velocity of drone1 for collision avoidance. 
+
+Now that two possible perpendicular velocity corrections have been determined, each can be applied to the current velocity of drone1, and the minimum seperation distance between drone1 and drone2 (dist) can again be calculated. The velocity correction for which dist satisfies the specified minimum safe distance can be finally applied to the current velocity of drone1 for collision avoidance. 
+
 ![Required Velocity](https://github.com/user-attachments/assets/329a02d5-538d-4c1e-a3dd-4e1ebbc43675)
