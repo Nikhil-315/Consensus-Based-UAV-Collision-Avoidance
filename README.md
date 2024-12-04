@@ -1,9 +1,9 @@
 # Consensus-Based-UAV-Collision-Avoidance
 This repository implements a simple consesus based collision avoidance method for two UAVs using Ardupilot and MAVROS flight control stack. The method has been implemented using Python and ROS1 Noetic.
 
-When an adversary drone (drone2) is within alert distance, the user drone (drone1) listens for position and velocity data of drone2 (facilitated by ROS topics in this case). drone1 also receives the cooperative status of drone2, i.e. how much is drone2 willing to take corrective actions. If drone2 is not cooperative, drone1 will take entirety of the corrective action required. If drone2 is cooperative, drone1 takes a part of the corrective action required while assuming the other part is taken by drone2. 
+When an adversary drone (drone2) is within the alert distance, the user drone (drone1) listens for the position and velocity data of drone2 (facilitated by ROS topics in this case). drone1 also receives the cooperative status of drone2, i.e. how much is drone2 willing to take corrective actions. If drone2 is not cooperative, drone1 will take entirety of the corrective action required. If drone2 is cooperative, drone1 takes a part of the corrective action required while assuming the other part is taken by drone2. 
 
-The corrective action required is determined by a simple method which uses relative distance and relative velocity of the drones and cooperative status of each drone.
+The corrective action required is determined by a simple method which uses relative distance and relative velocity of the drones and cooperative status of each drone. For simplicity, corrective action in horizontal plane only is considered.
 
 
 ## Contents
@@ -85,3 +85,18 @@ vel\_correct\_req = vel\_correct\_req * \frac{D_2}{D_1 + D_2}
 ```
 
 Therefore, higher cooperative status (for ex. 3) would be given higher airspace priority and thus lesser corrective action will be assigned to it, while lower cooperative status (for ex. 1) would be given lesser airspace priority and thus more corrective action will be assigned to it.
+
+
+### Collision Avoidance
+The calculated magnitude of perpendicular velocity correction must be multiplied to a unit vector perpendicular to the relative velocity in the horizontal plane. For a given vector $(V_x, V_y, V_z)$, there can be two perpendicular unit vectors in the horizontal plane. 
+
+```math
+V_{p_1} = \left( \frac{-V_y}{\sqrt{V_x^2 + V_y^2}}, \frac{V_x}{\sqrt{V_x^2 + V_y^2}}, 0 \right) = V
+```
+
+```math
+V_{p_2} = \left( \frac{V_y}{\sqrt{V_x^2 + V_y^2}}, \frac{-V_x}{\sqrt{V_x^2 + V_y^2}}, 0 \right) = -V
+```
+It can be seen that the two vectors are along the same line but in opposite directions. 
+Now that two possible perpendicular velocity corrections have been determined, each can be applied to the current velocity of drone1, and the minimum seperation distance between drone1 and drone2 (dist) is again calculated. The velocity correction for which dist satisfies the specified minimum safe distance can be finally applied to the current velocity of drone1 for collision avoidance. 
+![Required Velocity](https://github.com/user-attachments/assets/329a02d5-538d-4c1e-a3dd-4e1ebbc43675)
