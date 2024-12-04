@@ -154,23 +154,34 @@ Once the Gazebo environment has been spawned and the Ardupilot controller for ea
 ```
 roslaunch collision_avoidance 2_apm.launch
 ```
+<br />
 
 After the apm instances have been launched successfully, run the command:
 
 ```
 roslaunch collision_avoidance collision_control.launch
 ```
+<br />
+
+In case the drones do not takeoff at all, abort the collision_control.launch task and run the following command before trying again:
+
+```
+rosclean purge
+```
+<br />
 
 To record the trajectories of drone1 and drone2 in utm coordinates, run the command:
 
 ```
 rosrun collision_avoidance gcs.py
 ```
+<br />
 
 After the recording the trajectories of the drones, to plot the trajectories you may run the command:
 
 ```
 rosrun collision_avoidance plot.py
 ```
+<br />
 
 ![head_on_graph](https://github.com/user-attachments/assets/15400eeb-cd0f-4873-ab2c-d8ab24b31927)
