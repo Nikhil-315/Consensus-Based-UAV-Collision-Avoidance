@@ -119,7 +119,19 @@ V_{p_2} = \left( \frac{V_y}{\sqrt{V_x^2 + V_y^2}}, \frac{-V_x}{\sqrt{V_x^2 + V_y
 ```
 <br />
 
-It can be seen that the two vectors are along the same line but in opposite directions. 
+It can be seen that the two vectors are along the same line but in opposite directions.<br />
+Two possible perpendicular velocity corrections are: 
+<br />
+
+```math
+V_{correct_1} = vel\_correct\_req * \left( V \right)
+```
+<br />
+
+```math
+V_{correct_2} = vel\_correct\_req * \left( -V \right)
+```
+<br />
 
 Now that two possible perpendicular velocity corrections have been determined, each can be applied to the current velocity of drone1, and the minimum seperation distance between drone1 and drone2 (dist) can again be calculated. The velocity correction for which dist satisfies the specified minimum safe distance can be finally applied to the current velocity of drone1 for collision avoidance. 
 <br />
