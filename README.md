@@ -24,11 +24,13 @@ The corrective action required is determined by a simple method which uses relat
 ```
 pip install utm
 ```
+<br />
 
 6. PyGeodesy Library for Python
 ```
 pip install PyGeodesy
 ```
+<br />
 
 ## Theory
 This section contains 3 parts:
