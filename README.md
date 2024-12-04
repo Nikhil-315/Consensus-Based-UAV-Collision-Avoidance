@@ -84,7 +84,7 @@ But if drone2 is cooperative and has cooperative status D_2, while cooperative s
 vel\_correct\_req = vel\_correct\_req * \frac{D_2}{D_1 + D_2} 
 ```
 
-Therefore, higher cooperative status (for ex. 3) would be given higher airspace priority and thus lesser corrective action will be assigned to it, while lower cooperative status (for ex. 1) would be given lesser airspace priority and thus more corrective action will be assigned to it.
+Therefore, a higher cooperative status (for ex. 3) would be given a higher airspace priority and thus lesser corrective action will be assigned to it, while a lower cooperative status (for ex. 1) would be given a lesser airspace priority and thus more corrective action will be assigned to it.
 
 
 ### Collision Avoidance
