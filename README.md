@@ -104,3 +104,37 @@ It can be seen that the two vectors are along the same line but in opposite dire
 Now that two possible perpendicular velocity corrections have been determined, each can be applied to the current velocity of drone1, and the minimum seperation distance between drone1 and drone2 (dist) can again be calculated. The velocity correction for which dist satisfies the specified minimum safe distance can be finally applied to the current velocity of drone1 for collision avoidance. 
 
 ![Required Velocity](https://github.com/user-attachments/assets/329a02d5-538d-4c1e-a3dd-4e1ebbc43675)
+
+
+## Working
+![Modes](https://github.com/user-attachments/assets/c0eabac6-c6c9-42e6-bfe7-b9a3e8bdb612)
+
+Having setup the workspace, you may replace the csv file path given at 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone1.py' and 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone2.py' line 458 with the path for csv file containing waypoints as per your mission. 
+
+The csv file given at 'cas_ws/src/collision_avoidance/src/waypoints.csv' is an example of waypoints that can be given to drone1 and drone2. Please note that the columns alt1 and alt2 refer to relative altitude wrt initial takeoff altitude.
+
+Once the Gazebo environment has been spawned and the Ardupilot controllers for each drone has been initialized, run the command:
+
+```
+roslaunch collision_avoidance 2_apm.launch
+```
+
+After the apm instances have been launched successfully, run the command:
+
+```
+roslaunch collision_avoidance collision_control.launch
+```
+
+To record the trajectories of drone1 and drone2 in utm coordinates, run the command:
+
+```
+rosrun collision_avoidance gcs.py
+```
+
+After the recording the trajectories of the drones, to plot the trajectories you may run the command:
+
+```
+rosrun collision_avoidance plot.py
+```
+
+![head_on_graph](https://github.com/user-attachments/assets/15400eeb-cd0f-4873-ab2c-d8ab24b31927)
