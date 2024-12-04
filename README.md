@@ -62,6 +62,7 @@ ttc = \frac{|relative\_distance\_vect|}{cos(\theta) |relative\_velocity\_vect|}
 
 If dist is less than the specified minimum safe distance, it would indicate a collision between drone1 and drone2 after time ttc.
 <br />
+<br />
 
 ### Corrective Action Calculation
 ![Desired Velocity](https://github.com/user-attachments/assets/bea884ac-e22b-4bb1-93bb-7d31ff759e24)
@@ -99,6 +100,7 @@ vel\_correct\_req = vel\_correct\_req * \frac{D_2}{D_1 + D_2}
 <br />
 
 Therefore, a higher cooperative status (for ex. 3) would be given a higher airspace priority and thus lesser corrective action will be assigned to it, while a lower cooperative status (for ex. 1) would be given a lesser airspace priority and thus more corrective action will be assigned to it.
+<br />
 <br />
 
 ### Collision Avoidance
