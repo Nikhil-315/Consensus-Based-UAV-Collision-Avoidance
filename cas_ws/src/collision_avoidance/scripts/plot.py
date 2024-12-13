@@ -8,7 +8,7 @@ drone1_x, drone1_y, drone1_z = [], [], []
 drone2_x, drone2_y, drone2_z = [], [], []
 
 # Read data from the text file
-with open('/home/usr/cas_ws/src/collision_avoidance/src/trajectories.txt', 'r') as file:
+with open('/home/usr/cas_ws/src/collision_avoidance/scripts/trajectories.txt', 'r') as file:
     # Skip the header line
     next(file)
     
