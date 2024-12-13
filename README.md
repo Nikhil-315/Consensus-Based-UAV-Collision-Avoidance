@@ -158,9 +158,9 @@ Working Modes <br />
 <br />
 <br />
 
-Having set up the workspace, you may replace the csv file path given at 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone1.py' and 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone2.py' line 458 with the path for csv file containing waypoints as per your mission. 
+Having set up the workspace, you may replace the csv file path given at 'cas_ws/src/collision_avoidance/scripts/waypoint_follow_drone1.py' and 'cas_ws/src/collision_avoidance/scripts/waypoint_follow_drone2.py' line 458 with the path for csv file containing waypoints as per your mission. 
 
-The csv file given at 'cas_ws/src/collision_avoidance/src/waypoints.csv' is an example of waypoints that can be given to drone1 and drone2. Please note that the columns alt1 and alt2 refer to relative altitude wrt initial takeoff altitude.
+The csv file given at 'cas_ws/src/collision_avoidance/scripts/waypoints.csv' is an example of waypoints that can be given to drone1 and drone2. Please note that the columns alt1 and alt2 refer to relative altitude wrt initial takeoff altitude. lat1, lon1, alt1 are waypoints given to drone1 while lat2, lon2, alt2 are waypoints given to drone2. 
 
 For non-cooperative drone, you may set the cooperative variable as 'None'. Else, you may set it as any positive integer such as 1, 2, 3, etc. 
 Once the Gazebo environment has been spawned and the Ardupilot controller for each drone has been initialized, run the command:
