@@ -8,7 +8,7 @@ import utm
 # Initialize global variables to store positions
 drone1_position = None
 drone2_position = None
-txt_filename = '/home/usr/cas_ws/src/collision_avoidance/src/trajectories.txt'
+txt_filename = '/home/usr/cas_ws/src/collision_avoidance/scripts/trajectories.txt'
 
 def drone1_callback(data):
     global drone1_position
