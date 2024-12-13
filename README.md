@@ -158,7 +158,7 @@ Working Modes <br />
 <br />
 <br />
 
-Having setup the workspace, you may replace the csv file path given at 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone1.py' and 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone2.py' line 458 with the path for csv file containing waypoints as per your mission. 
+Having set up the workspace, you may replace the csv file path given at 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone1.py' and 'cas_ws/src/collision_avoidance/src/waypoint_follow_drone2.py' line 458 with the path for csv file containing waypoints as per your mission. 
 
 The csv file given at 'cas_ws/src/collision_avoidance/src/waypoints.csv' is an example of waypoints that can be given to drone1 and drone2. Please note that the columns alt1 and alt2 refer to relative altitude wrt initial takeoff altitude.
 
