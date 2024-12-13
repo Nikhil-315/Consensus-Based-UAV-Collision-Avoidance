@@ -453,9 +453,9 @@ class WaypointFollower:
 #-----------------------------------------------------------------------------------------------------------------------------------#
 if __name__ == '__main__':
 
-    agent_id = 1                                                             # Change this to your agent ID
-    cooperative = 1                                                          # Change this to your cooperative strategy
-    csv_file = '/home/usr/cas_ws/src/collision_avoidance/src/waypoints.csv'  # Change this to your CSV file path
+    agent_id = 1                                                                 # Change this to your agent ID
+    cooperative = 1                                                              # Change this to your cooperative strategy
+    csv_file = '/home/usr/cas_ws/src/collision_avoidance/scripts/waypoints.csv'  # Change this to your CSV file path
 
     waypoint_follower = WaypointFollower(agent_id, csv_file, cooperative)
     waypoint_follower.run()
