@@ -1,0 +1,9 @@
+<launch>
+
+    
+    <node name="drone1_collision_control" pkg="collision_avoidance" type="waypoint_follow_drone1.py" output="screen" />
+   
+    <node name="drone2_collision_control" pkg="collision_avoidance" type="waypoint_follow_drone2.py" output="screen" />
+
+
+</launch>
