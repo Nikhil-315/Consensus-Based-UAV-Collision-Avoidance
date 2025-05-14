@@ -140,6 +140,12 @@ Now that two possible perpendicular velocity corrections have been determined, e
 <br />
 
 ## Working
+
+Check out our YouTube playlist:
+
+[YouTube Playlist](https://youtube.com/playlist?list=PLA8cbAjoUfdG9TNo93Xvplb8GFfCCfi2T&feature=shared)
+
+
 ![InShot_20241204_144305861](https://github.com/user-attachments/assets/b9f09a94-1a77-4827-87f7-eff7e746e1d9)
 
 Head On Collision Case<br />
